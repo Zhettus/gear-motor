@@ -1,2 +1,2 @@
-idf_component_register(SRCS "test.c"
+idf_component_register(SRCS "gear-motor.c"
                     INCLUDE_DIRS ".")

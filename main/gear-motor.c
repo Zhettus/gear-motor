@@ -13,7 +13,7 @@
 #define PIN_ENC_A      GPIO_NUM_32     // encoder channel A
 #define PIN_ENC_B      GPIO_NUM_33     // encoder channel B
 
-#define PWM_FREQ_HZ    1000        //pwm > 2000 for zk-bm1
+#define PWM_FREQ_HZ    1000        //pwm < 2000 for zk-bm1
 #define PWM_RES         LEDC_TIMER_10_BIT
 #define PWM_MAX        1023
 #define LEDC_MODE       LEDC_LOW_SPEED_MODE
@@ -27,33 +27,37 @@
 #define COUNTS_PER_MOTOR_REV  (4 * ENCODER_CPT)
 #define GEAR_RATIO            131.0f   // motor rev per output rev
 
-#define MOTOR_RPM_AT_MAX      9000.0f
+#define MOTOR_RPM_AT_MAX      4500.0f 
 
 
 #define CONTROL_DT_MS         20
-#define KP                    0.03f
-#define KI                    0.10f
+#define KP                    0.10f 
+#define KI                    0.50f
 #define KD                    0.0f
-#define INTEG_LIMIT           ((float)PWM_MAX)
+#define INTEG_LIMIT (PWM_MAX * 0.40f)
 static volatile float g_target_output_rpm = 0.0f;
 static volatile bool  g_drive_enabled     = false;
 static pcnt_unit_handle_t g_pcnt = NULL;
 
+#define MIN_PWM 150.0f
+
 static void zk_output(float signed_duty)
 {
     float mag = fabsf(signed_duty);
+    
+    if (mag > 0.1f && mag < MIN_PWM) {
+        mag = MIN_PWM; 
+    }
+
     if (mag > PWM_MAX) mag = PWM_MAX;
     uint32_t duty = (uint32_t)(mag + 0.5f);
 
     if (signed_duty >= 0.0f) {
-        // forward: PWM on IN1, IN2 held low
-        // pull the opposite input low FIRST so the two are never both high
         ledc_set_duty(LEDC_MODE, LEDC_CH_INB, 0);
         ledc_update_duty(LEDC_MODE, LEDC_CH_INB);
         ledc_set_duty(LEDC_MODE, LEDC_CH_INA, duty);
         ledc_update_duty(LEDC_MODE, LEDC_CH_INA);
     } else {
-        // reverse: PWM on IN2, IN1 held low
         ledc_set_duty(LEDC_MODE, LEDC_CH_INA, 0);
         ledc_update_duty(LEDC_MODE, LEDC_CH_INA);
         ledc_set_duty(LEDC_MODE, LEDC_CH_INB, duty);
@@ -108,6 +112,28 @@ static void control_task(void *arg)
         float out = ff + KP * err + integral + KD * deriv;
         if (out >  PWM_MAX) out =  PWM_MAX;
         if (out < -PWM_MAX) out = -PWM_MAX;
+
+        // --- Add these variables before the for(;;) loop ---
+        int stall_counter = 0;
+        const int STALL_THRESHOLD = 25; // 25 loops * 20ms = 500ms of being stuck
+
+        // --- Inside the for(;;) loop, right after calculating out ---
+        
+        // STALL DETECTION LOGIC
+        // If we are commanding a significant output, but actual RPM is near zero
+        if (fabsf(out) > (PWM_MAX * 0.2f) && fabsf(meas_motor_rpm) < 1.0f) {
+            stall_counter++;
+            if (stall_counter > STALL_THRESHOLD) {
+                // Obstacle detected! Shut down for safety.
+                zk_coast();
+                g_drive_enabled = false;
+                g_target_output_rpm = 0.0f;
+                integral = 0.0f;
+                // Optional: Trigger a beep or warning light here
+            }
+        } else {
+            stall_counter = 0; // Reset if moving normally
+        }
 
         zk_output(out);
     }
@@ -214,16 +240,41 @@ static void drive_init(void)
     xTaskCreate(control_task, "motor_ctl", 4096, NULL, 5, NULL);
 }
 
+// Sets the target RPM continuously without blocking the program
+static void set_motor_speed_rpm(float target_rpm)
+{
+    if (target_rpm == 0.0f) {
+        stopMotor(); // Disables drive and resets the PID integral
+    } else {
+        g_target_output_rpm = target_rpm;
+        g_drive_enabled = true;
+    }
+}
+
 void app_main(void)
 {
     drive_init();
-    moveForward(1.3f, 10.0f); //по часовой
-/*
+    
     for (;;) {
-        moveForward(5.0f, 30.0f);
-        vTaskDelay(pdMS_TO_TICKS(500));
-        moveBackward(5.0f, 30.0f);
-        vTaskDelay(pdMS_TO_TICKS(500));
+        // 1. Ramp up forward speed from 0 to 30 RPM
+        /*
+        for (float speed = 0.0f; speed <= 30.0f; speed += 2.0f) {
+            set_motor_speed_rpm(speed);
+            vTaskDelay(pdMS_TO_TICKS(100)); // Update speed every 100ms
+        }*/
+   
+        set_motor_speed_rpm(5.0f);
+        vTaskDelay(pdMS_TO_TICKS(5000));  
+
+        set_motor_speed_rpm(0.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+
+        
+        set_motor_speed_rpm(-5.0f);
+        vTaskDelay(pdMS_TO_TICKS(5000));
+        set_motor_speed_rpm(0.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        
+        
     }
-    */
 }

@@ -8,17 +8,7 @@
 #include "driver/pulse_cnt.h"
 #include "esp_log.h"
 
-/* ======================= ZK-BM1 wiring =======================
- * No enable pin. Sign-magnitude on the two logic inputs (channel A):
- *   forward : PWM on IN1, IN2 = LOW
- *   reverse : IN1 = LOW,  PWM on IN2
- *   coast   : both LOW
- * Both inputs are PWM-capable -> two LEDC channels.
- * PWM must stay <= 2 kHz. No reverse-polarity protection.
- * ============================================================ */
 
-/* 1 = bypass PID, ramp raw duty (bring-up / wiring test).
- * 0 = normal closed-loop operation.                        */
 #define OPEN_LOOP_TEST   0
 
 #define PIN_INA        GPIO_NUM_26     // ZK-BM1 IN1  (PWM)
@@ -46,16 +36,8 @@
 #define KD                    0.0f
 #define INTEG_LIMIT           ((float)PWM_MAX)
 
-/* Escalating stiction breakaway.
- * While the motor is commanded but still stalled (|meas| < BREAKAWAY_RPM),
- * the kick duty starts at MIN_START_DUTY and ramps up by KICK_RAMP each
- * cycle, capped at KICK_MAX, until the encoder shows motion. This adapts
- * to different breakaway torque forward vs reverse. The integrator is
- * frozen while kicking so it doesn't wind up and jerk on release.        */
-#define MIN_START_DUTY        400.0f      // starting kick (~39%)
-#define KICK_RAMP              30.0f       // added per 20 ms cycle
-#define KICK_MAX              850.0f       // ceiling (~83%)
-#define BREAKAWAY_RPM          50.0f       // motor-shaft rpm
+#define MIN_START_DUTY        400.0f      // ~39% of PWM_MAX
+#define BREAKAWAY_RPM         5.0f       // motor-shaft rpm
 
 static const char *TAG = "motor";
 static volatile float g_target_output_rpm = 0.0f;
@@ -96,7 +78,6 @@ static void control_task(void *arg)
     const float dt = CONTROL_DT_MS / 1000.0f;
     float integral = 0.0f;
     float prev_err = 0.0f;
-    float kick     = MIN_START_DUTY;
     uint32_t log_div = 0;
     TickType_t last_wake = xTaskGetTickCount();
 
@@ -113,7 +94,6 @@ static void control_task(void *arg)
         if (!g_drive_enabled) {
             integral = 0.0f;
             prev_err = 0.0f;
-            kick     = MIN_START_DUTY;   // re-arm for the next move
             zk_coast();
             continue;
         }
@@ -121,17 +101,11 @@ static void control_task(void *arg)
         float target_motor_rpm = g_target_output_rpm * GEAR_RATIO;
         float err = target_motor_rpm - meas_motor_rpm;
 
-        bool commanded = fabsf(target_motor_rpm) > 1.0f;
-        bool stalled   = commanded && (fabsf(meas_motor_rpm) < BREAKAWAY_RPM);
-
         float ff = (target_motor_rpm / MOTOR_RPM_AT_MAX) * PWM_MAX;
 
-        // freeze the integrator while breaking away (anti-windup)
-        if (!stalled) {
-            integral += KI * err * dt;
-            if (integral >  INTEG_LIMIT) integral =  INTEG_LIMIT;
-            if (integral < -INTEG_LIMIT) integral = -INTEG_LIMIT;
-        }
+        integral += KI * err * dt;
+        if (integral >  INTEG_LIMIT) integral =  INTEG_LIMIT;
+        if (integral < -INTEG_LIMIT) integral = -INTEG_LIMIT;
 
         float deriv = (err - prev_err) / dt;
         prev_err = err;
@@ -140,22 +114,15 @@ static void control_task(void *arg)
         if (out >  PWM_MAX) out =  PWM_MAX;
         if (out < -PWM_MAX) out = -PWM_MAX;
 
-        // --- escalating breakaway kick ---
-        if (stalled) {
-            kick += KICK_RAMP;
-            if (kick > KICK_MAX) kick = KICK_MAX;
-            if (fabsf(out) < kick) {
-                out = (target_motor_rpm >= 0.0f) ? kick : -kick;
-            }
-        } else {
-            kick = MIN_START_DUTY;       // moving: hand back to PID, re-arm
+        if (fabsf(meas_motor_rpm) < BREAKAWAY_RPM && fabsf(out) < MIN_START_DUTY) {
+            out = (target_motor_rpm >= 0.0f) ? MIN_START_DUTY : -MIN_START_DUTY;
         }
 
         zk_output(out);
 
         if ((log_div++ % 10) == 0) {   // ~5 Hz
-            ESP_LOGI(TAG, "cnt=%d meas=%.0f tgt=%.0f out=%.0f kick=%.0f",
-                     count, meas_motor_rpm, target_motor_rpm, out, kick);
+            ESP_LOGI(TAG, "cnt=%d meas=%.0f tgt=%.0f out=%.0f",
+                     count, meas_motor_rpm, target_motor_rpm, out);
         }
     }
 }
@@ -262,9 +229,19 @@ void app_main(void)
         }
     }
 #else
-    // demo: forward then reverse, both should break away now
+    //moveForward(1.3f, 10.0f); //closing
+    moveBackward(1.3f, 10.0f); //opening
+
+    vTaskDelay(pdMS_TO_TICKS(3000));
+
     moveForward(1.3f, 10.0f);
-    vTaskDelay(pdMS_TO_TICKS(500));
-    moveBackward(1.3f, 10.0f);
+    /*
+    for (;;) {
+        moveForward(5.0f, 30.0f);
+        vTaskDelay(pdMS_TO_TICKS(500));
+        moveBackward(5.0f, 30.0f);
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+    */
 #endif
 }

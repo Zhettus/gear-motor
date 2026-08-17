@@ -34,7 +34,7 @@
 #define KP                    0.10f 
 #define KI                    0.50f
 #define KD                    0.0f
-#define INTEG_LIMIT (PWM_MAX * 0.40f)
+#define INTEG_LIMIT (PWM_MAX * 0.50f) //Integral Windup! 
 static volatile float g_target_output_rpm = 0.0f;
 static volatile bool  g_drive_enabled     = false;
 static pcnt_unit_handle_t g_pcnt = NULL;

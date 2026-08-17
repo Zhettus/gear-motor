@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "gear-motor",
-    "project_version":    "696e04f-dirty",
+    "project_version":    "05a0ef4-dirty",
     "project_path":       "/home/zhettus/gear-motor",
     "idf_path":           "/home/zhettus/.espressif/v5.2.7/esp-idf",
     "build_dir":          "/home/zhettus/gear-motor/build",
@@ -820,7 +820,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/zhettus/gear-motor/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/zhettus/gear-motor/main/absolute-tresholding.c" ],
+            "sources": [ "/home/zhettus/gear-motor/main/absolute-tresholding-dist.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {

@@ -46,7 +46,7 @@
 #define INTEG_LIMIT           (PWM_MAX * 0.50f)
 #define MIN_PWM               150.0f
 
-#define MAX_CURRENT           0.35f
+#define MAX_CURRENT           0.5f
 
 static const char *TAG = "MOTOR_SYSTEM";
 

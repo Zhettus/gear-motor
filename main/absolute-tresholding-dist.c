@@ -23,7 +23,7 @@
 #define INA219_REG_SHUNTV 0x01
 #define INA219_REG_BUSV   0x02
 
-#define PWM_FREQ_HZ    1000            // keep under 2000 for the ZK-BM1
+#define PWM_FREQ_HZ    2000       // keep under 2000 for the ZK-BM1
 #define PWM_RES        LEDC_TIMER_10_BIT
 #define PWM_MAX        1023
 #define LEDC_MODE      LEDC_LOW_SPEED_MODE
@@ -44,7 +44,8 @@
 #define MIN_PWM         150.0f         // used only as a stiction kick, not a running floor
 
 // Safety / obstacle handling
-#define MAX_CURRENT           0.5f     // tune this to your measured running current
+#define MAX_CURRENT           0.4f     // tune this to your measured running current
+#define MAX_RETRIES           15
 #define STARTUP_GRACE_MS      800      // ignore inrush right after a move starts
 #define CURRENT_TRIP_SAMPLES  3        // consecutive over-current samples before we act
 #define KICKSTART_MS          200      // window where we allow the stiction kick
@@ -344,6 +345,7 @@ static void stopMotor(void)
     g_target_output_rpm = 0.0f;
     g_drive_enabled = false;
     g_auto_mode = MODE_IDLE;
+    //vTaskDelay(pdMS_TO_TICKS(3000)); 
 }
 
 static void drive_init(void)
@@ -465,13 +467,46 @@ static bool run_motor_and_wait(float target_rpm, uint32_t wait_ms)
     return false;
 }
 
+static bool run_leg(float target_rpm, uint32_t wait_ms){
+    for (int attempt = 0; attempt <= MAX_RETRIES; attempt++){
+        if (!run_motor_and_wait(target_rpm, wait_ms)){
+            return true;
+        }
+        ESP_LOGW(TAG, "Obstacle detected, attempt");
+        vTaskDelay(pdMS_TO_TICKS(1500));
+    }
+    ESP_LOGE(TAG, "Obstacle persists, holding");
+    return false;
+}
+
 void app_main(void)
 {
     drive_init();
 
     for (;;) {
+        //opening clockwise
+        if(!run_leg(7.0f, 5000)){
+            set_motor_speed_rpm(0.0f);
+            vTaskDelay(pdMS_TO_TICKS(3000));
+            continue;
+        }
+        set_motor_speed_rpm(0.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+
+        //closing anticlockwise
+        if(!run_leg(-7.0f, 5000)){
+            set_motor_speed_rpm(0.0f);
+            vTaskDelay(pdMS_TO_TICKS(3000));
+            continue;
+        }
+        set_motor_speed_rpm(0.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+
+
+
+        /*
         if (run_motor_and_wait(7.0f, 5000)) {
-            vTaskDelay(pdMS_TO_TICKS(500));   // small cooldown so we don't slam back in
+            vTaskDelay(pdMS_TO_TICKS(500));   // small cooldown 
             continue;
         }
 
@@ -484,6 +519,6 @@ void app_main(void)
         }
 
         set_motor_speed_rpm(0.0f);
-        vTaskDelay(pdMS_TO_TICKS(100));
+        vTaskDelay(pdMS_TO_TICKS(100));*/
     }
 }

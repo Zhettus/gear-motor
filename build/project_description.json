@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "gear-motor",
-    "project_version":    "05a0ef4-dirty",
+    "project_version":    "a356e93-dirty",
     "project_path":       "/home/zhettus/gear-motor",
     "idf_path":           "/home/zhettus/.espressif/v5.2.7/esp-idf",
     "build_dir":          "/home/zhettus/gear-motor/build",

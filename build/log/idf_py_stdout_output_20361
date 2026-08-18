@@ -1,0 +1,240 @@
+m
+[0;32mI (23�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15632
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.7 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Aug 17 2026 15:43:23[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0b7bch ( 47036) map[0m
+[0;32mI (120) esp_image: segment 1: paddr=0001b7e4 vaddr=3ffb0000 size=02708h (  9992) load[0m
+[0;32mI (124) esp_image: segment 2: paddr=0001def4 vaddr=40080000 size=02124h (  8484) load[0m
+[0;32mI (130) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=14404h ( 82948) map[0m
+[0;32mI (163) esp_image: segment 4: paddr=0003442c vaddr=40082124 size=0bfb8h ( 49080) load[0m
+[0;32mI (190) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (190) boot: Disabling RNG early entropy source...[0m
+[0;32mI (201) cpu_start: Multicore app[0m
+[0;32mI (210) cpu_start: Pro cpu start user code[0m
+[0;32mI (210) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (211) cpu_start: Application information:[0m
+[0;32mI (214) cpu_start: Project name:     gear-motor[0m
+[0;32mI (219) cpu_start: App version:      a356e93-dirty[0m
+[0;32mI (224) cpu_start: Compile time:     Aug 18 2026 14:21:31[0m
+[0;32mI (230) cpu_start: ELF file SHA256:  808ce7d5e...[0m
+[0;32mI (236) cpu_start: ESP-IDF:          v5.2.7[0m
+[0;32mI (241) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (245) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (250) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (255) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (262) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (268) heap_init: At 3FFB3090 len 0002CF70 (179 KiB): DRAM[0m
+[0;32mI (274) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (281) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (287) heap_init: At 4008E0DC len 00011F24 (71 KiB): IRAM[0m
+[0;32mI (295) spi_flash: detected chip: generic[0m
+[0;32mI (298) spi_flash: flash io: dio[0m
+[0;33mW (302) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (315) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (326) main_task: Started on CPU0[0m
+[0;32mI (336) main_task: Calling app_main()[0m
+[0;32mI (336) gpio: GPIO[32]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (336) gpio: GPIO[33]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (346) gpio: GPIO[33]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (356) gpio: GPIO[32]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (586) MOTOR_SYSTEM: Bus V: 11.57 V | Curr: 0.215 A (215.4 mA)[0m
+[0;32mI (826) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.171 A (171.5 mA)[0m
+[0;32mI (1066) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.175 A (175.5 mA)[0m
+[0;32mI (1306) MOTOR_SYSTEM: Bus V: 11.66 V | Curr: 0.134 A (134.0 mA)[0m
+[0;32mI (1546) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.170 A (169.6 mA)[0m
+[0;32mI (1786) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.191 A (190.9 mA)[0m
+[0;32mI (2026) MOTOR_SYSTEM: Bus V: 11.62 V | Curr: 0.156 A (156.0 mA)[0m
+[0;32mI (2266) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.169 A (169.3 mA)[0m
+[0;32mI (2506) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.194 A (193.6 mA)[0m
+[0;32mI (2746) MOTOR_SYSTEM: Bus V: 11.62 V | Curr: 0.146 A (146.5 mA)[0m
+[0;32mI (2986) MOTOR_SYSTEM: Bus V: 11.57 V | Curr: 0.190 A (190.2 mA)[0m
+[0;32mI (3226) MOTOR_SYSTEM: Bus V: 11.54 V | Curr: 0.357 A (357.5 mA)[0m
+[0;32mI (3466) MOTOR_SYSTEM: Bus V: 11.37 V | Curr: 0.394 A (393.9 mA)[0m
+[0;33mW (3586) MOTOR_SYSTEM: Interference at 0.45 A. Backing up.[0m
+[0;32mI (3706) MOTOR_SYSTEM: Bus V: 11.54 V | Curr: 0.209 A (208.7 mA)[0m
+[0;32mI (3946) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.152 A (152.0 mA)[0m
+[0;32mI (4186) MOTOR_SYSTEM: Bus V: 11.68 V | Curr: 0.131 A (130.7 mA)[0m
+[0;32mI (4426) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.153 A (153.2 mA)[0m
+[0;32mI (4666) MOTOR_SYSTEM: Bus V: 11.73 V | Curr: 0.183 A (182.7 mA)[0m
+[0;32mI (4906) MOTOR_SYSTEM: Bus V: 11.64 V | Curr: 0.147 A (147.0 mA)[0m
+[0;32mI (5146) MOTOR_SYSTEM: Bus V: 11.69 V | Curr: 0.156 A (156.1 mA)[0m
+[0;32mI (5386) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.188 A (188.3 mA)[0m
+[0;32mI (5626) MOTOR_SYSTEM: Bus V: 11.67 V | Curr: 0.141 A (141.0 mA)[0m
+[0;32mI (5866) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.140 A (139.9 mA)[0m
+[0;32mI (6006) MOTOR_SYSTEM: Returned to start. Stopping.[0m
+[0;32mI (6106) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.005 A (4.6 mA)[0m
+[0;32mI (6346) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.004 A (4.5 mA)[0m
+[0;32mI (6586) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.004 A (4.3 mA)[0m
+[0;32mI (6826) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.004 A (4.3 mA)[0m
+[0;32mI (7066) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.004 A (4.4 mA)[0m
+[0;32mI (7306) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.004 A (4.5 mA)[0m
+[0;32mI (7546) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.005 A (4.6 mA)[0m
+[0;32mI (7786) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.005 A (4.6 mA)[0m
+[0;32mI (8026) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.004 A (4.5 mA)[0m
+[0;32mI (8266) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.004 A (4.5 mA)[0m
+[0;32mI (8506) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.004 A (4.4 mA)[0m
+[0;32mI (8746) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.005 A (4.6 mA)[0m
+[0;32mI (8986) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.004 A (4.5 mA)[0m
+[0;32mI (9566) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.107 A (106.8 mA)[0m
+[0;32mI (9806) MOTOR_SYSTEM: Bus V: 11.79 V | Curr: 0.131 A (131.5 mA)[0m
+[0;32mI (10046) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.190 A (189.7 mA)[0m
+[0;32mI (10286) MOTOR_SYSTEM: Bus V: 11.68 V | Curr: 0.146 A (146.1 mA)[0m
+[0;32mI (10526) MOTOR_SYSTEM: Bus V: 11.73 V | Curr: 0.167 A (167.3 mA)[0m
+[0;32mI (10766) MOTOR_SYSTEM: Bus V: 11.77 V | Curr: 0.201 A (200.9 mA)[0m
+[0;32mI (11006) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.144 A (144.2 mA)[0m
+[0;32mI (11246) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.156 A (156.2 mA)[0m
+[0;32mI (11486) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.205 A (204.9 mA)[0m
+[0;32mI (11726) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.140 A (140.4 mA)[0m
+[0;32mI (11966) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (12206) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.002 A (2.0 mA)[0m
+[0;32mI (12446) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (12686) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.0 mA)[0m
+[0;32mI (12926) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (13166) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.3 mA)[0m
+[0;32mI (13406) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.002 A (1.9 mA)[0m
+[0;32mI (13646) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.0 mA)[0m
+[0;32mI (13886) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (14126) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.002 A (2.3 mA)[0m
+[0;32mI (14366) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (14606) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.002 A (2.3 mA)[0m
+[0;32mI (14846) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.3 mA)[0m
+[0;32mI (15086) MOTOR_SYSTEM: Bus V: 11.61 V | Curr: 0.372 A (372.3 mA)[0m
+[0;32mI (15326) MOTOR_SYSTEM: Bus V: 11.68 V | Curr: 0.157 A (157.4 mA)[0m
+[0;32mI (15566) MOTOR_SYSTEM: Bus V: 11.77 V | Curr: 0.157 A (157.3 mA)[0m
+[0;32mI (15806) MOTOR_SYSTEM: Bus V: 11.75 V | Curr: 0.168 A (168.5 mA)[0m
+[0;32mI (16046) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.137 A (136.6 mA)[0m
+[0;32mI (16286) MOTOR_SYSTEM: Bus V: 11.75 V | Curr: 0.175 A (175.4 mA)[0m
+[0;32mI (16526) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.197 A (197.4 mA)[0m
+[0;32mI (16766) MOTOR_SYSTEM: Bus V: 11.69 V | Curr: 0.138 A (137.6 mA)[0m
+[0;32mI (17006) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.174 A (173.7 mA)[0m
+[0;32mI (17246) MOTOR_SYSTEM: Bus V: 11.75 V | Curr: 0.187 A (186.8 mA)[0m
+[0;32mI (17486) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.134 A (134.3 mA)[0m
+[0;32mI (17726) MOTOR_SYSTEM: Bus V: 11.78 V | Curr: 0.151 A (151.0 mA)[0m
+[0;32mI (17966) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.172 A (172.4 mA)[0m
+[0;32mI (18206) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.124 A (124.1 mA)[0m
+[0;32mI (18446) MOTOR_SYSTEM: Bus V: 11.78 V | Curr: 0.145 A (145.0 mA)[0m
+[0;32mI (18686) MOTOR_SYSTEM: Bus V: 11.77 V | Curr: 0.182 A (181.9 mA)[0m
+[0;32mI (18926) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.141 A (140.7 mA)[0m
+[0;32mI (19166) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.153 A (153.4 mA)[0m
+[0;32mI (19406) MOTOR_SYSTEM: Bus V: 11.77 V | Curr: 0.191 A (190.7 mA)[0m
+[0;32mI (19646) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.138 A (138.0 mA)[0m
+[0;32mI (19886) MOTOR_SYSTEM: Bus V: 11.75 V | Curr: 0.152 A (152.1 mA)[0m
+[0;32mI (20126) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (20366) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (20606) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.0 mA)[0m
+[0;32mI (20846) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (21086) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (21326) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (21566) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (21806) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (1.9 mA)[0m
+[0;32mI (22046) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.4 mA)[0m
+[0;32mI (22286) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.0 mA)[0m
+[0;32mI (22526) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (1.9 mA)[0m
+[0;32mI (22766) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (23006) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.3 mA)[0m
+[0;32mI (23246) MOTOR_SYSTEM: Bus V: 11.58 V | Curr: 0.218 A (218.5 mA)[0m
+[0;32mI (23486) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.186 A (185.8 mA)[0m
+[0;32mI (23726) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.177 A (177.5 mA)[0m
+[0;32mI (23966) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.139 A (139.5 mA)[0m
+[0;32mI (24206) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.175 A (175.0 mA)[0m
+[0;32mI (24446) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.189 A (188.5 mA)[0m
+[0;32mI (24686) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.140 A (140.3 mA)[0m
+[0;32mI (24926) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.169 A (168.6 mA)[0m
+[0;32mI (25166) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.186 A (186.1 mA)[0m
+[0;32mI (25406) MOTOR_SYSTEM: Bus V: 11.67 V | Curr: 0.153 A (153.1 mA)[0m
+[0;32mI (25646) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.176 A (175.6 mA)[0m
+[0;32mI (25886) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.201 A (201.1 mA)[0m
+[0;32mI (26126) MOTOR_SYSTEM: Bus V: 11.66 V | Curr: 0.170 A (169.6 mA)[0m
+[0;32mI (26366) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.175 A (175.5 mA)[0m
+[0;32mI (26606) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.208 A (207.6 mA)[0m
+[0;32mI (26846) MOTOR_SYSTEM: Bus V: 11.68 V | Curr: 0.155 A (154.6 mA)[0m
+[0;32mI (27086) MOTOR_SYSTEM: Bus V: 11.73 V | Curr: 0.176 A (176.1 mA)[0m
+[0;32mI (27326) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.197 A (197.1 mA)[0m
+[0;32mI (27566) MOTOR_SYSTEM: Bus V: 11.68 V | Curr: 0.153 A (152.6 mA)[0m
+[0;32mI (27806) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.166 A (165.9 mA)[0m
+[0;32mI (28046) MOTOR_SYSTEM: Bus V: 11.75 V | Curr: 0.206 A (205.6 mA)[0m
+[0;32mI (28286) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.0 mA)[0m
+[0;32mI (28526) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (28766) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (1.9 mA)[0m
+[0;32mI (29006) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (29246) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (1.8 mA)[0m
+[0;32mI (29486) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (29726) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.1 mA)[0m
+[0;32mI (29966) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.002 A (2.0 mA)[0m
+[0;32mI (30206) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (30446) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.0 mA)[0m
+[0;32mI (30686) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (30926) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (31166) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (31406) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.226 A (226.1 mA)[0m
+[0;32mI (31646) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.167 A (166.7 mA)[0m
+[0;32mI (31886) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.138 A (138.5 mA)[0m
+[0;32mI (32126) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.207 A (206.6 mA)[0m
+[0;32mI (32366) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.242 A (241.7 mA)[0m
+[0;32mI (32606) MOTOR_SYSTEM: Bus V: 11.58 V | Curr: 0.229 A (228.7 mA)[0m
+[0;32mI (32846) MOTOR_SYSTEM: Bus V: 11.49 V | Curr: 0.330 A (329.7 mA)[0m
+[0;32mI (33086) MOTOR_SYSTEM: Bus V: 11.62 V | Curr: 0.338 A (338.3 mA)[0m
+[0;32mI (33326) MOTOR_SYSTEM: Bus V: 11.46 V | Curr: 0.337 A (336.9 mA)[0m
+[0;32mI (33566) MOTOR_SYSTEM: Bus V: 11.45 V | Curr: 0.338 A (338.5 mA)[0m
+[0;33mW (33726) MOTOR_SYSTEM: Interference at 0.41 A. Backing up.[0m
+[0;32mI (33806) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.253 A (253.1 mA)[0m
+[0;32mI (34046) MOTOR_SYSTEM: Bus V: 11.69 V | Curr: 0.146 A (146.0 mA)[0m
+[0;32mI (34286) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.187 A (186.7 mA)[0m
+[0;32mI (34526) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.160 A (159.6 mA)[0m
+[0;32mI (34766) MOTOR_SYSTEM: Bus V: 11.75 V | Curr: 0.105 A (104.9 mA)[0m
+[0;32mI (35006) MOTOR_SYSTEM: Bus V: 11.74 V | Curr: 0.185 A (184.7 mA)[0m
+[0;32mI (35246) MOTOR_SYSTEM: Bus V: 11.71 V | Curr: 0.201 A (200.8 mA)[0m
+[0;32mI (35486) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.142 A (142.4 mA)[0m
+[0;32mI (35526) MOTOR_SYSTEM: Returned to start. Stopping.[0m
+[0;32mI (35726) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.005 A (4.7 mA)[0m
+[0;32mI (35966) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.004 A (4.3 mA)[0m
+[0;32mI (36206) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.004 A (4.4 mA)[0m
+[0;32mI (36446) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.005 A (4.6 mA)[0m
+[0;32mI (36686) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.004 A (4.4 mA)[0m
+[0;32mI (36926) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.005 A (4.6 mA)[0m
+[0;32mI (37166) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.004 A (4.5 mA)[0m
+[0;32mI (37406) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.004 A (4.4 mA)[0m
+[0;32mI (37646) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.005 A (4.6 mA)[0m
+[0;32mI (37886) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.004 A (4.4 mA)[0m
+[0;32mI (38126) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.004 A (4.5 mA)[0m
+[0;32mI (38366) MOTOR_SYSTEM: Bus V: 11.94 V | Curr: 0.005 A (4.6 mA)[0m
+[0;32mI (38946) MOTOR_SYSTEM: Bus V: 11.22 V | Curr: 0.546 A (546.0 mA)[0m
+[0;32mI (39186) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.005 A (4.7 mA)[0m
+[0;32mI (39426) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.132 A (132.3 mA)[0m
+[0;32mI (39666) MOTOR_SYSTEM: Bus V: 11.78 V | Curr: 0.196 A (196.5 mA)[0m
+[0;32mI (39906) MOTOR_SYSTEM: Bus V: 11.68 V | Curr: 0.174 A (174.5 mA)[0m
+[0;32mI (40146) MOTOR_SYSTEM: Bus V: 11.69 V | Curr: 0.169 A (169.4 mA)[0m
+[0;32mI (40386) MOTOR_SYSTEM: Bus V: 11.76 V | Curr: 0.214 A (214.3 mA)[0m
+[0;32mI (40626) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.169 A (168.6 mA)[0m
+[0;32mI (40866) MOTOR_SYSTEM: Bus V: 11.72 V | Curr: 0.151 A (150.8 mA)[0m
+[0;32mI (41106) MOTOR_SYSTEM: Bus V: 11.78 V | Curr: 0.198 A (198.2 mA)[0m
+[0;32mI (41346) MOTOR_SYSTEM: Bus V: 11.70 V | Curr: 0.174 A (173.5 mA)[0m
+[0;32mI (41586) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (41826) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.2 mA)[0m
+[0;32mI (42066) MOTOR_SYSTEM: Bus V: 11.92 V | Curr: 0.002 A (2.3 mA)[0m
+[0;32mI (42306) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.3 mA)[0m
+[0;32mI (42546) MOTOR_SYSTEM: Bus V: 11.93 V | Curr: 0.002 A (2.3 mA)[0m
+[0;32mI (42786) MOTOR_SYSTEM: Bus V: 11.91 V | Curr: 0.002 A (2.1 mA)[0m

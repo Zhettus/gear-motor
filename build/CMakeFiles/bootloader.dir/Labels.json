@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "/home/zhettus/gear-motor/build/CMakeFiles/bootloader"
+			"file" : "/Users/zadyra/gear-motor/build/CMakeFiles/bootloader"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/CMakeFiles/bootloader.rule"
+			"file" : "/Users/zadyra/gear-motor/build/CMakeFiles/bootloader.rule"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/CMakeFiles/bootloader-complete.rule"
+			"file" : "/Users/zadyra/gear-motor/build/CMakeFiles/bootloader-complete.rule"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+			"file" : "/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+			"file" : "/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+			"file" : "/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+			"file" : "/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+			"file" : "/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+			"file" : "/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
 		},
 		{
-			"file" : "/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+			"file" : "/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
 		}
 	],
 	"target" : 

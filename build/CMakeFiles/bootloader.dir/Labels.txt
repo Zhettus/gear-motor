@@ -1,13 +1,13 @@
 # Target labels
  bootloader
 # Source files and their labels
-/home/zhettus/gear-motor/build/CMakeFiles/bootloader
-/home/zhettus/gear-motor/build/CMakeFiles/bootloader.rule
-/home/zhettus/gear-motor/build/CMakeFiles/bootloader-complete.rule
-/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
-/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
-/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
-/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
-/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
-/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
-/home/zhettus/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+/Users/zadyra/gear-motor/build/CMakeFiles/bootloader
+/Users/zadyra/gear-motor/build/CMakeFiles/bootloader.rule
+/Users/zadyra/gear-motor/build/CMakeFiles/bootloader-complete.rule
+/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/zadyra/gear-motor/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

@@ -1,4 +1,4 @@
-/* * Data converted from /home/zhettus/gear-motor/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /Users/zadyra/gear-motor/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

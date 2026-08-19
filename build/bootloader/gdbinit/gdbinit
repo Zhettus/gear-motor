@@ -1,2 +1,2 @@
-source /home/zhettus/gear-motor/build/bootloader/gdbinit/symbols
-source /home/zhettus/gear-motor/build/bootloader/gdbinit/connect
+source /Users/zadyra/gear-motor/build/bootloader/gdbinit/symbols
+source /Users/zadyra/gear-motor/build/bootloader/gdbinit/connect

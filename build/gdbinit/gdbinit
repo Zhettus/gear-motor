@@ -1,2 +1,2 @@
-source /home/zhettus/gear-motor/build/gdbinit/symbols
-source /home/zhettus/gear-motor/build/gdbinit/connect
+source /Users/zadyra/gear-motor/build/gdbinit/symbols
+source /Users/zadyra/gear-motor/build/gdbinit/connect
